@@ -13,12 +13,12 @@ public class KeyInput extends KeyAdapter {
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		
-		if(key==KeyEvent.VK_D) { keys[0]=true;}
-		if(key==KeyEvent.VK_A) { keys[1]=true;}
-		if(key==KeyEvent.VK_W) { keys[2]=true;}
-		if(key==KeyEvent.VK_S) { keys[3]=true;}
+		if(key==KeyEvent.VK_D) { keys[0]=true;keys[1]=false;keys[2]=false;keys[3]=false;}
+		if(key==KeyEvent.VK_A) { keys[0]=false;keys[1]=true;keys[2]=false;keys[3]=false;}
+		if(key==KeyEvent.VK_W) { keys[0]=false;keys[1]=false;keys[2]=true;keys[3]=false;}
+		if(key==KeyEvent.VK_S) { keys[0]=false;keys[1]=false;keys[2]=false;keys[3]=true;}
 	}
-	public void keyReleased(KeyEvent e){
+	/*public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
 		
 		if(key==KeyEvent.VK_D) { keys[0]=false;}
@@ -27,4 +27,5 @@ public class KeyInput extends KeyAdapter {
 		if(key==KeyEvent.VK_S) { keys[3]=false;}
 
 	}
+	*/
 }
