@@ -11,9 +11,22 @@ public class Game extends Canvas implements Runnable{
 	private Thread thread;
 	private boolean isRunning = false;
 	
+	//Instances
+	private Handler handler;
+	private KeyInput input;
+	
 	public Game(){
 		new Window(WIDTH,HEIGHT,title,this);
 		start();
+		init();
+		//
+		handler.addObject(new Pacman(100, 100, ID.Pacman,input));
+		
+	}
+	private void init(){
+		handler = new Handler();
+		input = new KeyInput();
+		this.addKeyListener(input);
 	}
 	
 	private synchronized void start(){
@@ -70,6 +83,7 @@ public class Game extends Canvas implements Runnable{
 	
 	private void tick(){
 		//Updates the game
+		handler.tick();
 	}
 	
 	private void render(){
@@ -86,6 +100,7 @@ public class Game extends Canvas implements Runnable{
 		g.setColor(Color.black);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
+		handler.render(g);
 		
 		bs.show();
 		g.dispose();
