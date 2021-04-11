@@ -20,7 +20,8 @@ public class Game extends Canvas implements Runnable{
 		start();
 		init();
 		//
-		handler.addObject(new Pacman(100, 100, ID.Pacman,input));
+		handler.addObject(new Pacman(100, 100, ID.Pacman,input,handler));
+		handler.addObject(new Frame(37,40,ID.Wall));
 		
 	}
 	private void init(){
