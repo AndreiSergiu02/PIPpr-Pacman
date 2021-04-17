@@ -46,7 +46,8 @@ public class Pacman extends GameObject{
 		velY=clamp(velY,-5,5);
 		
 		Collision();
-	}	
+		handler.addObject(new Trail((int)x,(int)y,ID.Trail,Color.yellow,0.02f,handler));
+	}
 	
 	private void Collision(){
 		for(int i=0;i<handler.object.size();i++){

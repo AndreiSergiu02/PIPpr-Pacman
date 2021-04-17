@@ -7,7 +7,8 @@ public class Handler {
 	
 	public void tick(){
 		//Updating every object in the game
-		for(GameObject tempObject : object){
+		for(int i=0;i<object.size();i++){
+			GameObject tempObject = object.get(i);
 			tempObject.tick();
 		}
 	}
