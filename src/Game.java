@@ -2,26 +2,33 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game extends Canvas implements Runnable{
 	
-	public static int WIDTH=800,HEIGHT=608;
+	public static int WIDTH=815,HEIGHT=560;
 	public String title="Pacman";
-	
 	private Thread thread;
 	private boolean isRunning = false;
 	
 	//Instances
 	private Handler handler;
 	private KeyInput input;
+	private BufferedImage level = null;
+	
 	
 	public Game(){
 		new Window(WIDTH,HEIGHT,title,this);
 		start();
 		init();
 		//
-		handler.addObject(new Pacman(100, 100, ID.Pacman,input,handler));
-		handler.addObject(new Frame(37,40,ID.Wall));
+		handler.addObject(new Pacman(60, 60, ID.Pacman,input,handler));
+		// handler.addObject(new Frame(37,40,ID.Wall));
+
+		BufferedImageLoader loader = new BufferedImageLoader();
+		level = loader.loadImage("/map/mapfinal.png");
+		
+		loadLevel(level);
 		
 	}
 	private void init(){
@@ -106,6 +113,23 @@ public class Game extends Canvas implements Runnable{
 		
 		bs.show();
 		g.dispose();
+	}
+	
+	private void loadLevel(BufferedImage image){
+		int w=image.getWidth();
+		int h=image.getHeight();
+		
+		for(int xx=0;xx<w;xx++){
+			for(int yy=0;yy<h;yy++){
+				int pixel=image.getRGB(xx, yy);
+				int red = (pixel>>16) & 0xff;
+				int green = (pixel>>8) & 0xff;
+				int blue= (pixel) & 0xff;
+				
+				if(blue!=255)
+					handler.addObject(new Tile(xx*32,yy*32,ID.Wall));
+			}
+		}
 	}
 	
 	public static void main(String args[]){
