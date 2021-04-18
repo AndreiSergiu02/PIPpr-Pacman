@@ -3,13 +3,18 @@ import java.awt.event.KeyEvent;
 
 
 public class KeyInput extends KeyAdapter {
-	
+	/**
+	 * Asigura miscarea obiectului cu ajutorul tastelor
+	 * Vectorul keys[] inmagazineaza informatii despre tastele care fac ca obiectul sa se miste
+	 */
 	public boolean keys[] = new boolean[4];
 	//keys 0 = true -> right
 	//keys 1 = true -> left
 	//keys 2 = true -> up
 	//keys 3 = true -> down
-
+	/**
+	 * @param e verifica daca tasta este apasata
+	 */
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		
@@ -19,6 +24,9 @@ public class KeyInput extends KeyAdapter {
 		if(key==KeyEvent.VK_S) { keys[0]=false;keys[1]=false;keys[2]=false;keys[3]=true;}
 	}
 	
+	/**
+	 * Daca tastele nu sunt apasate, obiectul se opreste
+	 */
 	public void stopMovement(){
 		
 		keys[0]=false;

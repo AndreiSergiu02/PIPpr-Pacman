@@ -3,7 +3,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-
+/**
+ * 
+ * @author Bianca
+ *
+ */
 
 public class Trail extends GameObject{
 	
@@ -28,6 +32,10 @@ public class Trail extends GameObject{
 		 else handler.removeObject(this);
 	}
 
+	
+	/** 
+	 * @param g randeaza urma
+	 */
 	public void render(Graphics g) {
 		
 		Graphics2D g2d = (Graphics2D) g;
@@ -38,11 +46,20 @@ public class Trail extends GameObject{
 		g2d.setComposite(makeTransparent(1));
 	}
 	
+	
+	/** 
+	 * @param alpha
+	 * @return AlphaComposite
+	 */
 	private AlphaComposite makeTransparent(float alpha){
 		int type = AlphaComposite.SRC_OVER;
 		return(AlphaComposite.getInstance(type,alpha));
 	}
 
+	
+	/** 
+	 * @return Rectangle
+	 */
 	public Rectangle getBounds() {
 		return null;
 	}

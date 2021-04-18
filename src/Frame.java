@@ -1,10 +1,18 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
+/**
+ * 
+ * @author Bianca
+ *
+ */
 
 public class Frame extends GameObject{
-	
+	/**
+	 * @param x valoarea lui x pe axa 
+	 * @param y valoarea lui y pe axa
+	 * @param id care obiect din lista este
+	 */
 	public Frame(float x, float y, ID id) {
 		super(x, y, id);
 		w=710;
@@ -15,6 +23,9 @@ public class Frame extends GameObject{
 	public void tick() {		
 	}
 
+	/**
+	 * Se ocupa de colorarea ferestrei
+	 */
 	@Override
 	public void render(Graphics g) {
 		
@@ -33,6 +44,9 @@ public class Frame extends GameObject{
 
 	}
 
+	/**
+	 * Dimeniuni pentru ferestra
+	 */
 	public Rectangle getBounds() {
 		return new Rectangle((int)x,(int)y,(int)w,(int)h);
 	}

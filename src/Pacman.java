@@ -5,10 +5,16 @@ import java.awt.Rectangle;
 
 
 public class Pacman extends GameObject{
-	
+	/**
+	 * @param _acc se ocupa de accelerarea obiectuliu in fereastra cand o tasta este apasata
+	 * @param _dcc decelerarea obiectului cand tasta nu mai este apasata
+	 */
 	private float _acc = 1f;
 	private float _dcc = 0.5f;
-	
+	/**
+	 * @param input primeste tasta care este apasata
+	 * @param handler primeste date despre obiect
+	 */
 	private KeyInput input;
 	private Handler handler;
 	
@@ -20,7 +26,9 @@ public class Pacman extends GameObject{
 		velX=1;
 		velY=1;
 	}
-
+	/*
+	 * tick() se ocupa de miscarea obiectului
+	 */
 	@Override
 	public void tick() {
 		
@@ -50,7 +58,9 @@ public class Pacman extends GameObject{
 		
 		handler.addObject(new Trail((int)x,(int)y,ID.Trail,new Color(255,255,100),0.02f,handler));
 	}
-
+	/**
+	 * In momentului unei coleziuni, obiectul se va opri
+	 */
 	private void Collision(){
 		for(int i=0;i<handler.object.size();i++){
 			GameObject tempObject = handler.object.get(i);
@@ -91,6 +101,17 @@ public class Pacman extends GameObject{
 		}
 	}
 	
+	
+	/** 
+	 * @param Rectangle((int)bx
+	 * @param (int)by
+	 * @param (int)bw
+	 * @param Rectangle((int)bx
+	 * @param (int)by
+	 * @param (int)bw
+	 * @param g
+	 * @return Rectangle
+	 */
 	public Rectangle getBounds(){//Horizontal Collision
 		float bx = x + velX;
 		float by = y;
@@ -100,6 +121,14 @@ public class Pacman extends GameObject{
 		return new Rectangle((int)bx,(int)by,(int)bw,(int)bh);
 	}
 	
+	
+	/** 
+	 * @param Rectangle((int)bx
+	 * @param (int)by
+	 * @param (int)bw
+	 * @param g
+	 * @return Rectangle
+	 */
 	public Rectangle getBounds2(){//Vertical Collision
 		float bx = x;
 		float by = y + velY;
@@ -108,7 +137,9 @@ public class Pacman extends GameObject{
 		
 		return new Rectangle((int)bx,(int)by,(int)bw,(int)bh);
 	}
-	
+	/**
+	 * Randarea obiectului Pacman
+	 */
 	@Override
 	public void render(Graphics g) {
 	
@@ -124,6 +155,13 @@ public class Pacman extends GameObject{
 		g.fillRect((int)x, (int)y, 32, 32);
 	}
 	
+	/**
+	 * 
+	 * @param value viteaza cu care de deplasare
+	 * @param min valorea minima cu care se depleseaza obiectul
+	 * @param max valorea maxima cu care se deplaseaza obiectul
+	 * @return o viteaza de deplasare astfel incat sa para ca merge constant
+	 */
 	private float clamp(float value, float min, float max){
 		if(value >= max) value = max;
 		else if(value<=min) value = min;

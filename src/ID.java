@@ -1,4 +1,7 @@
-
+/**
+ * Personajele din joc
+ *
+ */
 public enum ID {
 	
 	Player(),

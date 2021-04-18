@@ -4,9 +4,18 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * 
+ * @author Bianca
+ *
+ */
 
 public class Level {
-	
+	/**
+	 * @param width 
+	 * @param height
+	 * @param tiles
+	 */
 	public int width;
 	public int height;
 	
@@ -39,6 +48,10 @@ public class Level {
 		}
 	}
 	
+	
+	/** 
+	 * @param g
+	 */
 	public void render(Graphics g){
 		for (int x=0; x< width; x++){
 			for(int y=0; y<height; y++)

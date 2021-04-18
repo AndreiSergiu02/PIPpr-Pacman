@@ -3,20 +3,41 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+/**
+ * 
+ * @author Bianca
+ *
+ */
 
+@SuppressWarnings("serial")
 public class Game extends Canvas implements Runnable{
-	
+	/**
+	* @param WIDTH setam latimea
+	* @param HEIGHT setam inaltimea
+	* @param title setam numele ferestrei
+	* @param thread fir de executie
+	* @param isRunning spune daca jocul este pornit sau oprit
+
+	 */
 	public static int WIDTH=815,HEIGHT=560;
 	public String title="Pacman";
 	private Thread thread;
 	private boolean isRunning = false;
 	
+	/**
+	* @param handler primeste informatii despre jucator
+	* @param input primeste informatii de la tastatura
+	* @param level 
+	*/
 	//Instances
 	private Handler handler;
 	private KeyInput input;
 	private BufferedImage level = null;
 	
-	
+	/**
+	 * Costructor Game
+	 * Creeaza o noua fereastra prin apelul constructorului Window
+	 */
 	public Game(){
 		new Window(WIDTH,HEIGHT,title,this);
 		start();
@@ -31,12 +52,17 @@ public class Game extends Canvas implements Runnable{
 		loadLevel(level);
 		
 	}
+	
 	private void init(){
 		handler = new Handler();
 		input = new KeyInput();
 		this.addKeyListener(input);
 	}
 	
+	/**
+	 * Verifica starea in care se afla jocul, daca ruleaza sau nu
+	 * 
+	 */
 	private synchronized void start(){
 		if(isRunning) return;
 		
@@ -45,6 +71,10 @@ public class Game extends Canvas implements Runnable{
 		isRunning = true;
 	}
 	
+	/**
+	 * Verifica starea in care se afla jocul, daca ruleaza sau nu
+	 * 
+	 */
 	private synchronized void stop(){
 		if(!isRunning) return; 
 		
@@ -90,6 +120,10 @@ public class Game extends Canvas implements Runnable{
 		stop();
 	}
 	
+	/**
+	 * tick() si render() se ocupa de functionalitatea jocului
+	 * Fac ca jocul sa nu se intrerupa
+	 */
 	private void tick(){
 		//Updates the game
 		handler.tick();
@@ -115,6 +149,10 @@ public class Game extends Canvas implements Runnable{
 		g.dispose();
 	}
 	
+	
+	/** 
+	 * @param image
+	 */
 	private void loadLevel(BufferedImage image){
 		int w=image.getWidth();
 		int h=image.getHeight();
@@ -132,6 +170,9 @@ public class Game extends Canvas implements Runnable{
 		}
 	}
 	
+	/**
+	 * Cream o noua instanta de Game
+	 */
 	public static void main(String args[]){
 		new Game();
 	}
