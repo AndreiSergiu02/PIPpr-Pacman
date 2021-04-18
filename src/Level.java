@@ -12,9 +12,9 @@ import javax.imageio.ImageIO;
 
 public class Level {
 	/**
-	 * @param width 
-	 * @param height
-	 * @param tiles
+	 * @param width latimea unei placi	
+	 * @param height inaltimea unei placi
+	 * @param tiles cate placi sunt afisate
 	 */
 	public int width;
 	public int height;
@@ -48,10 +48,7 @@ public class Level {
 		}
 	}
 	
-	
-	/** 
-	 * @param g
-	 */
+
 	public void render(Graphics g){
 		for (int x=0; x< width; x++){
 			for(int y=0; y<height; y++)

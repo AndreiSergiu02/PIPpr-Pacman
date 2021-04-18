@@ -1,5 +1,8 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+/**
+ * @author Bianca
+ */
 
 
 public class KeyInput extends KeyAdapter {

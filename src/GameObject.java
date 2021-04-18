@@ -59,20 +59,13 @@ public abstract class GameObject {
 		}
 		
 		
-		/** 
-		 * @param getX(
-		 */
+		
 		public abstract void tick();
 		
-		/** 
-		 * @param getX(
-		 */
+		
 		public abstract void render(Graphics g);
 		
-		/** 
-		 * @param getX(
-		 * @return Rectangle
-		 */
+		
 		public abstract Rectangle getBounds();
 		
 		/**

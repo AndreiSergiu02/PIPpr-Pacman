@@ -1,6 +1,9 @@
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+/**
+ * @author Bianca
+ */
 
 
 public class Window {

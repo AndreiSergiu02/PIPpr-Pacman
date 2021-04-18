@@ -2,6 +2,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+/**
+ * @author Bianca
+ */
 
 
 public class Pacman extends GameObject{
@@ -102,16 +105,7 @@ public class Pacman extends GameObject{
 	}
 	
 	
-	/** 
-	 * @param Rectangle((int)bx
-	 * @param (int)by
-	 * @param (int)bw
-	 * @param Rectangle((int)bx
-	 * @param (int)by
-	 * @param (int)bw
-	 * @param g
-	 * @return Rectangle
-	 */
+
 	public Rectangle getBounds(){//Horizontal Collision
 		float bx = x + velX;
 		float by = y;
@@ -122,13 +116,7 @@ public class Pacman extends GameObject{
 	}
 	
 	
-	/** 
-	 * @param Rectangle((int)bx
-	 * @param (int)by
-	 * @param (int)bw
-	 * @param g
-	 * @return Rectangle
-	 */
+
 	public Rectangle getBounds2(){//Vertical Collision
 		float bx = x;
 		float by = y + velY;

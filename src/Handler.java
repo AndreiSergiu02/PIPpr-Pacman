@@ -1,5 +1,8 @@
 import java.awt.Graphics;
 import java.util.LinkedList;
+/**
+ * @author Bianca
+ */
 
 /**
  * Handler este o clasa care se ocupa cu updating si randare pentru fiecare obiect al jocului

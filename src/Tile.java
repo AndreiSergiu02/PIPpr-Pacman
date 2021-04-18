@@ -2,14 +2,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 /**
- * 
  * @author Bianca
- *
  */
 
-/**
- * 
- */
 public class Tile extends GameObject{
 	
 	public Tile(float x,float y, ID id){
@@ -18,7 +13,7 @@ public class Tile extends GameObject{
 
 	
 	/** 
-	 * @param g
+	 * @param g randeaza culoarea unei placi
 	 */
 	public void render(Graphics g){
 		g.setColor(Color.blue);
@@ -33,7 +28,7 @@ public class Tile extends GameObject{
 
 	
 	/** 
-	 * @return Rectangle
+	 * @return Rectangle o placa
 	 */
 	@Override
 	public Rectangle getBounds() {
