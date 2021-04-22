@@ -50,9 +50,7 @@ public class Game extends Canvas implements Runnable{
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
 		level = loader.loadImage("/map/mapfinal.png");
-		
 		loadLevel(level);
-		
 		
 	}
 	
