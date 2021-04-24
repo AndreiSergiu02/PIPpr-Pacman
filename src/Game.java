@@ -3,6 +3,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 /**
  * 
  * @author Bianca
@@ -50,9 +54,60 @@ public class Game extends Canvas implements Runnable{
 		BufferedImageLoader loader = new BufferedImageLoader();
 		level = loader.loadImage("/map/mapfinal.png");
 		loadLevel(level);
+		MovementFromFile();
 		
 	}
-	
+	public void MovementFromFile(){
+		
+		BufferedReader reader;
+		try{
+			reader = new BufferedReader(new FileReader("E:/Work/Java/Pacman-PipPR/src/movement/movement.txt"));
+			String line = reader.readLine();
+			while(line != null){
+				switch(line){
+				case "up":
+					input.keys[2]=true;
+					
+					try {
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					break;
+				case "down":
+					input.keys[3]=true;
+					try {
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					break;
+				case "left":
+					input.keys[1]=true;
+					try {
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					break;
+				case "right":
+					input.keys[0]=true;
+					try {
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					break;
+				default:
+					System.out.println("wrong line");
+				}
+				line=reader.readLine();
+			}
+			reader.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
 	private void init(){
 		handler = new Handler();
 		input = new KeyInput();
