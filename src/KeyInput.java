@@ -37,7 +37,7 @@ public class KeyInput extends KeyAdapter {
 		keys[2]=false;
 		keys[3]=false;
 	}
-	/*
+
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
 		
@@ -47,5 +47,5 @@ public class KeyInput extends KeyAdapter {
 		if(key==KeyEvent.VK_S) { keys[3]=false;}
 
 	}
-	*/
+	
 }

@@ -20,12 +20,13 @@ public class Pacman extends GameObject{
 	 */
 	private KeyInput input;
 	private Handler handler;
+	boolean right,left,up,down;
+	
 	
 	public Pacman(float x, float y, ID id, KeyInput input,Handler handler) {
 		super(x, y, id);
 		this.input= input;
 		this.handler=handler;
-		
 		velX=1;
 		velY=1;
 	}
@@ -34,23 +35,39 @@ public class Pacman extends GameObject{
 	 */
 	@Override
 	public void tick() {
-		
-		Collision();
-		
+			
 		x += velX;
 		y += velY;
 		
-		//Vertical movement
-		if(input.keys[2]) velY -= _acc;
-		else if(input.keys[3]) velY += _acc;
+		//keys 0 = true -> right
+		//keys 1 = true -> left
+		//keys 2 = true -> up
+		//keys 3 = true -> down
+		//Vertical movement		
+		if(input.keys[2]) { 
+			up=true;down=false;right=false;left=false;
+			y -= 32;
+			input.stopMovement();}
+		
+		else if(input.keys[3]) {
+			up=false;down=true;right=false;left=false;
+			y += 32;
+			input.stopMovement();}
+		
 		else if(!input.keys[2] && !input.keys[3]){
 			if(velY > 0) velY -=_dcc;
 			else if(velY < 0) velY += _dcc;
 		}
 		
 		//Horizontal movement
-		if(input.keys[0]) velX += _acc;
-		else if(input.keys[1]) velX -= _acc;
+		if(input.keys[0]) {
+			up=false;down=false;right=true;left=false;
+			x += 32;
+			input.stopMovement();}
+		else if(input.keys[1]) {
+			up=false;down=false;right=false;left=true;
+			x -= 32;
+			input.stopMovement();}
 		else if(!input.keys[0] && !input.keys[1]){
 			if(velX > 0) velX -=_dcc;
 			else if(velX < 0) velX += _dcc;
@@ -58,8 +75,8 @@ public class Pacman extends GameObject{
 		
 		velX=clamp(velX,-5,5);
 		velY=clamp(velY,-5,5);
-		
-		handler.addObject(new Trail((int)x,(int)y,ID.Trail,new Color(255,255,100),0.02f,handler));
+		Collision();
+		//handler.addObject(new Trail((int)x,(int)y,ID.Trail,new Color(255,255,100),0.02f,handler));
 	}
 	/**
 	 * In momentului unei coleziuni, obiectul se va opri
@@ -70,46 +87,21 @@ public class Pacman extends GameObject{
 			if(tempObject.getId()==ID.Wall){
 				if(getBounds().intersects(tempObject.getBounds())){
 				
-					if(velX>0){//Right
-						velX = 0;
-						x=tempObject.getX() - 32; 
-						input.stopMovement();
-						
-					}else if(velX < 0){//Left
-						velX = 0;
-						x=tempObject.getX() + 32; 
-						input.stopMovement();
-						
-					}
-				}
-				
-				if(tempObject.getId()==ID.Wall){
-					if(getBounds2().intersects(tempObject.getBounds())){
-						
-						if(velY>0){//Down
-							velY = 0;
-							y=tempObject.getY() - 32; 
-							input.stopMovement();
-							
-						}else if(velY < 0){//Up
-							velY = 0;
-							y=tempObject.getY() + 32; 
-							input.stopMovement();
-							
-						}
-					}
-				}
-				
+					  if(right)  x=tempObject.getX() - 32;
+					  if(left)	x=tempObject.getX() + 32;
+					  if(down) y=tempObject.getY() - 32;
+					  if(up) y=tempObject.getY() + 32;
+					
+				}		
 			}
 		}
 	}
 	
-	
 
 	public Rectangle getBounds(){//Horizontal Collision
-		float bx = x + velX;
+		float bx = x;
 		float by = y;
-		float bw = 32 + velX/2;
+		float bw = 32;
 		float bh = 32;
 		
 		return new Rectangle((int)bx,(int)by,(int)bw,(int)bh);
@@ -119,9 +111,9 @@ public class Pacman extends GameObject{
 
 	public Rectangle getBounds2(){//Vertical Collision
 		float bx = x;
-		float by = y + velY;
+		float by = y;
 		float bw = 32;
-		float bh = 32 + velY/2;
+		float bh = 32;
 		
 		return new Rectangle((int)bx,(int)by,(int)bw,(int)bh);
 	}
