@@ -156,10 +156,8 @@ public class Game extends Canvas implements Runnable{
 	private void loadLevel(BufferedImage image){
 		int w=image.getWidth();
 		int h=image.getHeight();
-		int a[][]= new int[w][h];
 		for(int xx=0;xx<w;xx++){
 			for(int yy=0;yy<h;yy++){
-				a[xx][yy]=image.getRGB(xx, yy);
 				int pixel=image.getRGB(xx, yy);
 				int red = (pixel>>16) & 0xff;
 				int green = (pixel>>8) & 0xff;
