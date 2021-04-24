@@ -27,6 +27,7 @@ public class Pacman extends GameObject{
 		super(x, y, id);
 		this.input= input;
 		this.handler=handler;
+		
 		velX=1;
 		velY=1;
 	}
@@ -75,6 +76,7 @@ public class Pacman extends GameObject{
 		
 		velX=clamp(velX,-5,5);
 		velY=clamp(velY,-5,5);
+		
 		Collision();
 		//handler.addObject(new Trail((int)x,(int)y,ID.Trail,new Color(255,255,100),0.02f,handler));
 	}
@@ -107,16 +109,6 @@ public class Pacman extends GameObject{
 		return new Rectangle((int)bx,(int)by,(int)bw,(int)bh);
 	}
 	
-	
-
-	public Rectangle getBounds2(){//Vertical Collision
-		float bx = x;
-		float by = y;
-		float bw = 32;
-		float bh = 32;
-		
-		return new Rectangle((int)bx,(int)by,(int)bw,(int)bh);
-	}
 	/**
 	 * Randarea obiectului Pacman
 	 */
@@ -127,9 +119,6 @@ public class Pacman extends GameObject{
 		
 		g2d.setColor(Color.blue);
 		g2d.fill(getBounds());
-		
-		g2d.setColor(Color.blue);
-		g2d.fill(getBounds2());
 		
 		g.setColor(Color.yellow);
 		g.fillRect((int)x, (int)y, 32, 32);
