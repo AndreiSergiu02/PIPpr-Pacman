@@ -43,10 +43,9 @@ public class Game extends Canvas implements Runnable{
 		start();
 		init();
 		//
-		handler.addObject(new Pacman(60, 60, ID.Pacman,input,handler));
+		handler.addObject(new Pacman(31, 31, ID.Pacman,input,handler));
 		// handler.addObject(new Frame(37,40,ID.Wall));
 		
-		handler.addObject(new Ghost(680, 450, ID.Ghost));
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
 		level = loader.loadImage("/map/mapfinal.png");
@@ -165,8 +164,10 @@ public class Game extends Canvas implements Runnable{
 				int green = (pixel>>8) & 0xff;
 				int blue= (pixel) & 0xff;
 				
-				if(blue!=255)
+				if(blue==255)
 					handler.addObject(new Tile(xx*32,yy*32,ID.Wall));
+				if(green==255)
+					handler.addObject(new Ghost(xx*32,yy*32,ID.Ghost));
 			}
 		}
 	}
