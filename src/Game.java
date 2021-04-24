@@ -50,13 +50,13 @@ public class Game extends Canvas implements Runnable{
 		handler.addObject(new Pacman(31, 31, ID.Pacman,input,handler));
 		// handler.addObject(new Frame(37,40,ID.Wall));
 		
-		
 		BufferedImageLoader loader = new BufferedImageLoader();
 		level = loader.loadImage("/map/mapfinal.png");
 		loadLevel(level);
 		MovementFromFile();
 		
 	}
+	
 	public void MovementFromFile(){
 		
 		BufferedReader reader;
@@ -76,6 +76,7 @@ public class Game extends Canvas implements Runnable{
 					break;
 				case "down":
 					input.keys[3]=true;
+						
 					try {
 						TimeUnit.SECONDS.sleep(1);
 					} catch (InterruptedException e) {
@@ -84,6 +85,7 @@ public class Game extends Canvas implements Runnable{
 					break;
 				case "left":
 					input.keys[1]=true;
+						
 					try {
 						TimeUnit.SECONDS.sleep(1);
 					} catch (InterruptedException e) {
@@ -92,6 +94,7 @@ public class Game extends Canvas implements Runnable{
 					break;
 				case "right":
 					input.keys[0]=true;
+						
 					try {
 						TimeUnit.SECONDS.sleep(1);
 					} catch (InterruptedException e) {
@@ -108,6 +111,7 @@ public class Game extends Canvas implements Runnable{
 			e.printStackTrace();
 		}
 	}
+	
 	private void init(){
 		handler = new Handler();
 		input = new KeyInput();
