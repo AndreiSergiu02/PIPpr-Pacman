@@ -8,12 +8,16 @@ import javax.imageio.ImageIO;
  *
  */
 
+/**
+ * Transforma imaginea
+ *
+ */
 public class BufferedImageLoader {
 		private BufferedImage image;
 		
 		/** 
-		 * @param path
-		 * @return BufferedImage
+		 * @param path calea personajelor
+		 * @return BufferedImage imaginea procesata 
 		 */
 		public BufferedImage loadImage(String path){
 			try{

@@ -12,27 +12,26 @@ import java.util.concurrent.TimeUnit;
  * @author Bianca
  *
  */
-
-@SuppressWarnings("serial")
+/**
+ * Se initializeaza si creeaza jocul propriu zis
+ */
+@SuppressWarnings({ "unused", "serial" })
 public class Game extends Canvas implements Runnable{
-	/**
-	* @param WIDTH setam latimea
+/**
+ * 	* @param WIDTH setam latimea
 	* @param HEIGHT setam inaltimea
 	* @param title setam numele ferestrei
 	* @param thread fir de executie
 	* @param isRunning spune daca jocul este pornit sau oprit
-
-	 */
+	* @param handler primeste informatii despre jucator
+	* @param input primeste informatii de la tastatura
+	* @param level
+ */
 	public static int WIDTH=815,HEIGHT=560;
 	public String title="Pacman";
 	private Thread thread;
 	private boolean isRunning = false;
-	
-	/**
-	* @param handler primeste informatii despre jucator
-	* @param input primeste informatii de la tastatura
-	* @param level 
-	*/
+
 	//Instances
 	private Handler handler;
 	private KeyInput input;

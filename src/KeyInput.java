@@ -4,7 +4,11 @@ import java.awt.event.KeyEvent;
  * @author Bianca
  */
 
-
+/**
+ * 
+ * Clasa in care se creeaza input-ul tastelor si actiunea acestora asupra personajelor
+ *
+ */
 public class KeyInput extends KeyAdapter {
 	/**
 	 * Asigura miscarea obiectului cu ajutorul tastelor
@@ -37,7 +41,7 @@ public class KeyInput extends KeyAdapter {
 		keys[2]=false;
 		keys[3]=false;
 	}
-
+	
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
 		

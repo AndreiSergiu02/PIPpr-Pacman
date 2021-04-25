@@ -6,23 +6,40 @@ import java.awt.Rectangle;
  * @author Bianca
  */
 
-
+/**
+ * 
+ * Clasa care creeaza personajul principal
+ *
+ */
+@SuppressWarnings("unused")
 public class Pacman extends GameObject{
 	/**
-	 * @param _acc se ocupa de accelerarea obiectuliu in fereastra cand o tasta este apasata
+	 * @param _acc se ocupa de accelerarea obiectului in fereastra cand o tasta este apasata
 	 * @param _dcc decelerarea obiectului cand tasta nu mai este apasata
 	 */
+	
 	private float _acc = 1f;
 	private float _dcc = 0.5f;
 	/**
 	 * @param input primeste tasta care este apasata
 	 * @param handler primeste date despre obiect
+	 * @param right deplasare pe axa Y pozitiv
+	 * @param left deplasare pe axa Y negativ
+	 * @param up deplasare pe axa X pozitiv
+	 * @param down deplasare pe axa X negativ
 	 */
 	private KeyInput input;
 	private Handler handler;
 	boolean right,left,up,down;
 	
-	
+	/**
+	 * 
+	 * @param x deplasare pe axa X
+	 * @param y deplasare pe axa Y
+	 * @param id personaj
+	 * @param input tastare care se apasa
+	 * @param handler coordonator pentru obiect 
+	 */
 	public Pacman(float x, float y, ID id, KeyInput input,Handler handler) {
 		super(x, y, id);
 		this.input= input;
@@ -80,6 +97,7 @@ public class Pacman extends GameObject{
 		Collision();
 		//handler.addObject(new Trail((int)x,(int)y,ID.Trail,new Color(255,255,100),0.02f,handler));
 	}
+	
 	/**
 	 * In momentului unei coleziuni, obiectul se va opri
 	 */
