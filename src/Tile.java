@@ -5,6 +5,11 @@ import java.awt.Rectangle;
  * @author Bianca
  */
 
+/**
+ * 
+ * Clasa care creeaza obstacole
+ *
+ */
 public class Tile extends GameObject{
 	
 	public Tile(float x,float y, ID id){
@@ -20,7 +25,10 @@ public class Tile extends GameObject{
 		g.fillRect((int)x,(int)y,32,32);
 		
 	}
-
+	
+	/**
+	 * Continuitatea jocului
+	 */
 	@Override
 	public void tick() {
 		

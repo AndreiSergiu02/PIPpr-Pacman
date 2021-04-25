@@ -59,13 +59,21 @@ public abstract class GameObject {
 		}
 		
 		
-		
+		/**
+		 * Continuitatea jocului
+		 */
 		public abstract void tick();
 		
-		
+		/**
+		 * 
+		 * @param g randarea unui obiect
+		 */
 		public abstract void render(Graphics g);
 		
-		
+		/**
+		 * 
+		 * @return specifica o zona dintr-un spatiu de coordonate care este închisa de punctul stanga sus al obiectului dreptunghiular (x, y) în spatiul de coordonate, latimea si inaltimea acestuia.
+		 */
 		public abstract Rectangle getBounds();
 		
 		/**

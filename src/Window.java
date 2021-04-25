@@ -5,7 +5,11 @@ import javax.swing.JFrame;
  * @author Bianca
  */
 
-
+/**
+ * 
+ * Fereastra in care se desfasoara jocul
+ *
+ */
 public class Window {
 	/**
 	 * @param width seteaza latimea ferestrei jocului

@@ -7,6 +7,10 @@ import java.awt.Rectangle;
  *
  */
 
+/**
+ * 
+ * Clasa care se ocupa de amplasarea jocului, dar si a obiectelor in fereastra
+ */
 public class Frame extends GameObject{
 	/**
 	 * @param x valoarea lui x pe axa 

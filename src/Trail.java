@@ -9,6 +9,11 @@ import java.awt.Rectangle;
  *
  */
 
+/**
+ * 
+ * Clasa care se ocupa de parcurgerea corecta a traseului
+ */
+
 public class Trail extends GameObject{
 	
 	private float alpha=1;
@@ -16,14 +21,24 @@ public class Trail extends GameObject{
 	private Color color;
 	
 	private Handler handler;
-	
+	/**
+	 * 
+	 * @param x deplasarea pe axa X
+	 * @param y deplasarea pe axa Y
+	 * @param id identificatorul pentru personaj
+	 * @param color atributul de culoare
+	 * @param life contor de viata la lovirea de obstacol
+	 * @param handler primeste date despre obiect
+	 */
 	public Trail(int x, int y, ID id,Color color, float life, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		this.life = life;
 		this.color = color;
 	}
-
+	/**
+	 * Continuitatea jocului
+	 */
 	public void tick() {
 		 if(alpha > life)
 		 {

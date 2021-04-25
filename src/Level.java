@@ -10,17 +10,29 @@ import javax.imageio.ImageIO;
  *
  */
 
+/**
+ * 
+ * Clasa in care se creeaza nivelul din procesarea imaginii
+ *
+ */
 public class Level {
-	/**
-	 * @param width latimea unei placi	
-	 * @param height inaltimea unei placi
-	 * @param tiles cate placi sunt afisate
-	 */
+/**
+ 	* @param width latimea unei placi
+ */
 	public int width;
+	/**
+	* @param height inaltimea unei placi
+	 */
 	public int height;
-	
+	/**
+	* @param tiles cate placi sunt afisate
+	 */
 	public Tile[][] tiles;
 	
+	/**
+	 * 
+	 * @param path calea care trebuie parcursa de obiect
+	 */
 	public Level(String path){
 		try {
 			BufferedImage map = ImageIO.read(getClass().getResource(path));
