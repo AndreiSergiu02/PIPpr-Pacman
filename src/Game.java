@@ -30,7 +30,7 @@ public class Game extends Canvas implements Runnable{
 	public static int WIDTH=815,HEIGHT=560;
 	public String title="Pacman";
 	private Thread thread;
-	private boolean isRunning = false;
+	boolean isRunning = false;
 
 	//Instances
 	private Handler handler;
