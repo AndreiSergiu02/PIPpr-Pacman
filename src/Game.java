@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Se initializeaza si creeaza jocul propriu zis
  */
-@SuppressWarnings({ "unused", "serial" })
+
 public class Game extends Canvas implements Runnable{
 /**
  * 	* @param WIDTH setam latimea
@@ -47,12 +47,13 @@ public class Game extends Canvas implements Runnable{
 		init();
 		//
 		handler.addObject(new Pacman(31, 31, ID.Pacman,input,handler));
+		//handler.addObject(new Trail(32, 32, ID.Walk,Color.red, 0.5f, handler));
 		// handler.addObject(new Frame(37,40,ID.Wall));
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
 		level = loader.loadImage("/map/mapfinal.png");
 		loadLevel(level);
-		MovementFromFile();
+		//MovementFromFile();
 		
 	}
 	
@@ -185,6 +186,7 @@ public class Game extends Canvas implements Runnable{
 	private void tick(){
 		//Updates the game
 		handler.tick();
+		
 	}
 	
 	private void render(){
@@ -215,6 +217,14 @@ public class Game extends Canvas implements Runnable{
 		int w=image.getWidth();
 		int h=image.getHeight();
 		
+		System.out.println("w:"+ w +"h:"+ h);
+		;
+	    int mat[][] = new int [h][w];{
+	    for(int i=0; i<h;i++){
+	       for(int j=0; j<w;j++){
+	            mat[i][j]=0;
+	        }}}
+		
 		for(int xx=0;xx<w;xx++){
 			for(int yy=0;yy<h;yy++){
 				int pixel=image.getRGB(xx, yy);
@@ -222,14 +232,30 @@ public class Game extends Canvas implements Runnable{
 				int green = (pixel>>8) & 0xff;
 				int blue= (pixel) & 0xff;
 				
-				if(blue==255)
+				if(blue==255){
 					handler.addObject(new Tile(xx*32,yy*32,ID.Wall));
-				if(green==255)
+					mat[yy][xx]=0;}
+				if(green==255){
 					handler.addObject(new Ghost(xx*32,yy*32,ID.Ghost));
+					mat[yy][xx]=9;
+				}
+				if(red==255){
+					handler.addObject(new Walk(xx*32,yy*32,ID.Walk,handler,input));
+					mat[yy][xx]=1;
+				}
+				
 			}
 		}
+		for(int i=0; i<h;i++){
+		       for(int j=0; j<w;j++){
+		            System.out.print(mat[i][j]);
+		        }
+		       System.out.println("");
+		       }
+		
 	}
 	
+	 
 	/**
 	 * Cream o noua instanta de Game
 	 */
