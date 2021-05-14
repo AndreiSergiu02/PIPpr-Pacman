@@ -28,9 +28,6 @@ public class Level {
 	* @param tiles cate placi sunt afisate
 	 */
 	public Tile[][] tiles;
-	public Walk[][] drum;
-	public Ghost[][] mancare;
-	
 	
 	/**
 	 * 
@@ -51,18 +48,12 @@ public class Level {
 				{
 					int val = pixels[ xx+(yy*width)];
 					
-					if(val == 0x0000FF){
+					if(val == 0xFF000000){
 						//Tile
-						tiles[xx][yy] = new Tile(xx*32, yy*32,ID.Wall);	
-					}
-					/*if(val == 0xFF0000 ){
-						drum[xx][yy] = new Walk(xx*32,yy*32,ID.Walk,handler,input);
-					}*/
-					if(val == 0x00ff00 ){
-						mancare[xx][yy] = new Ghost(xx*32,yy*32,ID.Ghost);
+						tiles[xx][yy] = new Tile(xx*32, yy*32,ID.Wall);
 					}
 				}
-										}
+			}
 			 
 		} catch (IOException e) { 
 			System.out.println("mesaj");
@@ -74,8 +65,7 @@ public class Level {
 		for (int x=0; x< width; x++){
 			for(int y=0; y<height; y++)
 			{
-				if(tiles[x][y] != null)
-				tiles[x][y].render(g);
+				if(tiles[x][y] != null) tiles[x][y].render(g);
 			}
 		}	
 	}
