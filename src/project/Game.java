@@ -1,3 +1,4 @@
+package project;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -30,7 +31,7 @@ public class Game extends Canvas implements Runnable{
 	public static int WIDTH=815,HEIGHT=560;
 	public String title="Pacman";
 	private Thread thread;
-	boolean isRunning = false;
+	public boolean isRunning = false;
 
 	//Instances
 	private Handler handler;
@@ -52,7 +53,7 @@ public class Game extends Canvas implements Runnable{
 		BufferedImageLoader loader = new BufferedImageLoader();
 		level = loader.loadImage("/map/mapfinal.png");
 		loadLevel(level);
-		MovementFromFile();
+		//MovementFromFile();
 		
 	}
 	
