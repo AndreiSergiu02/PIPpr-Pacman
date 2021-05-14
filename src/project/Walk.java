@@ -29,7 +29,7 @@ import com.google.common.collect.Table;
 		private KeyInput input;
 		private Handler handler;
 		private Color color; 
-		private Table<Integer, Integer, Integer> frequency;
+		
 		 
 		public  Walk (float x, float y, ID id,Handler handler,KeyInput input, Color color, Table<Integer, Integer, Integer> frequency ) {
 			super(x, y, id);
@@ -50,7 +50,7 @@ import com.google.common.collect.Table;
 		public void tick() {
 			
 			if (input.keys[0]||input.keys[1]||input.keys[2]||input.keys[3])
-					checkfreq();
+					//checkfreq();
 			
 		}
 
@@ -60,28 +60,5 @@ import com.google.common.collect.Table;
 		}
 	
 
-	public void checkfreq(){
-		
-		frequency.put((int)y,(int) x, 1);
-		 for(int i=0;i<handler.object.size();i++){
-				GameObject tempObject = handler.object.get(i);
-				if(tempObject.getId()==ID.Pacman){
-					if(tempObject.getBounds().intersects(tempObject.getBounds())){
-						switch (frequency.get((int) y, (int) x)) {
-						case 1:
-							new Walk(x * 32, y * 32, ID.Walk, handler, input, Color.white, frequency);
-							break;
-						case 2:
-							new Walk(x * 32, y * 32, ID.Walk, handler, input, Color.red, frequency);
-							break;
-						default:
-							System.out.println("default");
-						}
-							frequency.put((int)y,(int) x, frequency.get((int)y,(int) x)+1);
-						}
-					}
 	
-				}	
-				
-				}
 			}	

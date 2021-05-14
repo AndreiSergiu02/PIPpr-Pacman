@@ -268,7 +268,6 @@ public class Game extends Canvas implements Runnable{
 	
 	public void checkfreq() {
 
-		frequency.put((int) y, (int) x, 1);
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
 			if (tempObject.getId() == ID.Pacman) {
