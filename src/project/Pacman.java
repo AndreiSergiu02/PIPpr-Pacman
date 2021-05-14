@@ -1,3 +1,4 @@
+package project;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -95,7 +96,6 @@ public class Pacman extends GameObject{
 		velY=clamp(velY,-5,5);
 		
 		Collision();
-		//handler.addObject(new Trail((int)x,(int)y,ID.Trail,new Color(255,255,100),0.02f,handler));
 	}
 	
 	/**
