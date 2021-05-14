@@ -14,5 +14,6 @@ public enum ID {
 	Wall(),
 	Ghost(),
 	Food(),
-	Trail();
+	Trail(),
+	Walk();
 }

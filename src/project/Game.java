@@ -8,6 +8,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import java.util.Map;
+import java.util.Set;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
 /**
  * 
  * @author Bianca
@@ -37,6 +42,7 @@ public class Game extends Canvas implements Runnable{
 	private Handler handler;
 	private KeyInput input;
 	private BufferedImage level = null;
+	private Table<Integer, Integer, Integer> frequency;
 	
 	/**
 	 * Costructor Game
@@ -216,6 +222,16 @@ public class Game extends Canvas implements Runnable{
 		int w=image.getWidth();
 		int h=image.getHeight();
 		
+		System.out.println("w:"+ w +"h:"+ h);
+		
+	    int mat[][] = new int [h][w];{
+	    for(int i=0; i<h;i++){
+	       for(int j=0; j<w;j++){
+	            mat[i][j]=0;
+	        }}}
+	    
+	    Table<Integer, Integer, Integer> frequency = HashBasedTable.create();
+		
 		for(int xx=0;xx<w;xx++){
 			for(int yy=0;yy<h;yy++){
 				int pixel=image.getRGB(xx, yy);
@@ -223,13 +239,58 @@ public class Game extends Canvas implements Runnable{
 				int green = (pixel>>8) & 0xff;
 				int blue= (pixel) & 0xff;
 				
-				if(blue==255)
+				if(blue==255){
 					handler.addObject(new Tile(xx*32,yy*32,ID.Wall));
-				if(green==255)
+					mat[yy][xx]=0;}
+				if(green==255){
 					handler.addObject(new Ghost(xx*32,yy*32,ID.Ghost));
+					mat[yy][xx]=9;
+				}
+				if(red==255){
+					mat[yy][xx]=1;
+					frequency.put(yy,xx, 1);
+					handler.addObject(new Walk(xx*32,yy*32,ID.Walk,handler,input,Color.black,frequency));
+					
+				}
+				
 			}
 		}
+		for(int i=0; i<h;i++){
+		       for(int j=0; j<w;j++){
+		            System.out.print(mat[i][j]);
+		        }
+		       System.out.println("");
+		       }
+		
+		
+		
 	}
+	
+	public void checkfreq() {
+
+		frequency.put((int) y, (int) x, 1);
+		for (int i = 0; i < handler.object.size(); i++) {
+			GameObject tempObject = handler.object.get(i);
+			if (tempObject.getId() == ID.Pacman) {
+				if (tempObject.getBounds().intersects(tempObject.getBounds())) {
+					switch (frequency.get((int) y, (int) x)) {
+					case 1:
+						new Walk(x * 32, y * 32, ID.Walk, handler, input, Color.white, frequency);
+						break;
+					case 2:
+						new Walk(x * 32, y * 32, ID.Walk, handler, input, Color.red, frequency);
+						break;
+					default:
+						System.out.println("default");
+					}
+					frequency.put((int) y, (int) x, frequency.get((int) y, (int) x) + 1);
+				}
+			}
+
+		}
+
+	}
+	
 	
 	/**
 	 * Cream o noua instanta de Game
