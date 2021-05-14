@@ -7,7 +7,7 @@
  *
  */
 public enum ID {
-	
+	Walk(),
 	Player(),
 	Pacman(),
 	Wall(),
