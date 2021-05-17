@@ -55,9 +55,6 @@ public class Pacman extends GameObject{
 	@Override
 	public void tick() {
 			
-		//x += velX;
-		//y += velY;
-		
 		//keys 0 = true -> right
 		//keys 1 = true -> left
 		//keys 2 = true -> up
