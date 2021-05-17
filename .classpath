@@ -31,6 +31,6 @@
 	<classpathentry kind="lib" path="lib/opentest4j-1.1.1-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/opentest4j-1.1.1-sources.jar"/>
 	<classpathentry kind="lib" path="lib/opentest4j-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/rusum/Desktop/guava-r07.jar/guava-r07.jar"/>
+	<classpathentry kind="lib" path="lib/guava-r07.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
