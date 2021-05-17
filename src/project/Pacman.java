@@ -46,8 +46,8 @@ public class Pacman extends GameObject{
 		this.input= input;
 		this.handler=handler;
 		
-		velX=1;
-		velY=1;
+		velX=0;
+		velY=0;
 	}
 	/*
 	 * tick() se ocupa de miscarea obiectului
@@ -55,9 +55,6 @@ public class Pacman extends GameObject{
 	@Override
 	public void tick() {
 			
-		x += velX;
-		y += velY;
-		
 		//keys 0 = true -> right
 		//keys 1 = true -> left
 		//keys 2 = true -> up

@@ -13,6 +13,5 @@ public enum ID {
 	Pacman(),
 	Wall(),
 	Ghost(),
-	Food(),
-	Trail();
+	Walk();
 }
