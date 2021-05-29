@@ -263,6 +263,8 @@ public class Game extends Canvas implements Runnable {
 					mat[yy][xx] = 0;
 				}
 				if (green == 255) {
+					handler.addObject(new Walk(xx * 32, yy * 32, ID.Walk,
+							Color.BLACK));
 					handler.addObject(new Ghost(xx * 32, yy * 32, ID.Ghost));
 					frequency.put(yy * 32, xx * 32, 1);
 					mat[yy][xx] = 9;
@@ -312,7 +314,7 @@ public class Game extends Canvas implements Runnable {
 						return;
 					default:
 						handler.addObject(new Walk(x, y, ID.Walk, Color.GREEN));
-						System.out.println("default");
+						System.out.println("Maximum reached");
 						return;
 					}
 					// frequency.put(y, x, frequency.get(y, x) + 1);

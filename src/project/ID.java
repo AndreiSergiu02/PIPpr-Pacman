@@ -9,7 +9,6 @@ package project;
  */
 public enum ID {
 	
-	Player(),
 	Pacman(),
 	Wall(),
 	Ghost(),

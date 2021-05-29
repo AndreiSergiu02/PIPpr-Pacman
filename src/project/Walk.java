@@ -3,6 +3,7 @@ package project;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
 /**
  * 
  * @author Bianca
@@ -21,7 +22,7 @@ public class Walk extends GameObject {
 	 */
 	private Color color;
 
-	public Walk(float x, float y, ID id,Color color) {
+	public Walk(float x, float y, ID id, Color color) {
 		super(x, y, id);
 		this.color = color;
 	}
@@ -30,12 +31,14 @@ public class Walk extends GameObject {
 
 		g.setColor(color);
 		g.drawRect((int) x, (int) y, 32, 32);
+		g.drawLine((int) x, (int) y, (int) x + 32, (int) y + 32);
+		g.drawLine((int) x + 32, (int) y, (int) x, (int) y + 32);
 
 	}
 
 	@Override
 	public void tick() {
-		
+
 	}
 
 	@Override
